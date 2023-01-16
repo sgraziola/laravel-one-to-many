@@ -22,6 +22,22 @@
                 <small id=" thumbHelper" class="text-muted">Add the project thumb here</small>
             </div>
         </div>
+
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Types</label>
+            <select class="form-select form-select-lg @error('type_id') 'is-invalid' @enderror" name="type_id" id="type_id">
+                <option value="">No Type</option>
+
+                @forelse ($types as $type )
+                <!-- Check if the post has a category assigned or not -->
+                <option value="{{$type->id}}" {{ $type->id == old('type_id', $project->type ? $project->type->id : '') ? 'selected' : '' }}>{{$type->name}}</option>
+                @empty
+                <option value="">Sorry, no types in the system.</option>
+                @endforelse
+
+            </select>
+        </div>
+
         <div class="mb-3">
             <label for="language" class="form-label">Language</label>
             <input type="text" name="language" id="language" class="form-control @error('language') is-invalid @enderror" placeholder="project language" aria-describedby="languageHelper" value="{{$project->language}}">

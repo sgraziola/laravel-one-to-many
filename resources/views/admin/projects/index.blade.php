@@ -32,6 +32,7 @@
                         <th>Title</th>
                         <th>Slug</th>
                         <th>Thumb</th>
+                        <th>Type</th>
                         <th>Language</th>
                         <th>Actions</th>
 
@@ -50,6 +51,7 @@
                             <div class="placeholder-glow p-5 bg-secondary d-flex align-items-center justify-content-center" style="width: 80px;">Placeholder</div>
                             @endif
                         </td>
+                        <td>{{ $project->type ? $project->type->name : 'No type'}}</td>
                         <td>{{$project->language}}</td>
                         <td class="d-flex flex-column gap-2">
                             <a href='{{route("admin.projects.show", $project->slug)}}' class="btn btn-primary view">

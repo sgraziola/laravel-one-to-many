@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Type;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
@@ -18,6 +19,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::orderByDesc('id')->get();
+        //dd($projects);
 
         return view('admin.projects.index', compact('projects'));
     }
@@ -29,7 +31,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        //dd($types);
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -77,7 +81,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
