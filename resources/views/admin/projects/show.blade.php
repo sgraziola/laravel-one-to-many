@@ -12,6 +12,11 @@
         <div class="details">
             <h2>{{$project->title}}</h2>
 
+            <div class="type">
+                <strong>Type:</strong>
+                {{ $project->type ? $project->type->name : 'No type'}}
+            </div>
+
             <div class="language">
                 Linguaggio usato: {{$project->language}}
             </div>
